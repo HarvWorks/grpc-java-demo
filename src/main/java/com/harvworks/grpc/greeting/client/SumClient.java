@@ -5,6 +5,7 @@ import com.proto.greet.GreetResponse;
 import com.proto.greet.GreetServiceGrpc;
 import com.proto.greet.Greeting;
 import com.proto.sum.SumRequest;
+import com.proto.sum.SumResponse;
 import com.proto.sum.SumServiceGrpc;
 import com.proto.sum.SumValue;
 import io.grpc.ManagedChannel;
@@ -26,17 +27,18 @@ public class SumClient {
         // Created a protocol buffer greeting message
         SumValue sumValue = SumValue.newBuilder()
                 .setFirstValue(10)
+                .setSecondValue(5)
                 .build();
 
         // Do the same for greetResponse
         SumRequest sumRequest = SumRequest.newBuilder()
-                .se(greeting)
+                .setSumValue(sumValue)
                 .build();
 
         // call the RPC and get a greetResponse
-        GreetResponse greetResponse =  sumServiceClient.greet(greetRequest);
+        SumResponse sumResponse =  sumServiceClient.sum(sumRequest);
 
-        System.out.println(greetResponse.getResult());
+        System.out.println(sumResponse.getResult());
 
         System.out.println("Shutting down channel");
         channel.shutdown();
