@@ -10,6 +10,7 @@ public class GreetingServer {
         System.out.println("Hello I am the grpc server");
 
         Server server = ServerBuilder.forPort(50051)
+                .addService(new GreetServiceImpl())
                 .build();
 
         server.start();
