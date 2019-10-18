@@ -16,8 +16,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private SumValue() {
-    firstName_ = "";
-    lastName_ = "";
   }
 
   @java.lang.Override
@@ -50,16 +48,14 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 8: {
 
-            firstName_ = s;
+            firstValue_ = input.readInt32();
             break;
           }
-          case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 16: {
 
-            lastName_ = s;
+            secondValue_ = input.readInt32();
             break;
           }
           default: {
@@ -94,76 +90,24 @@ private static final long serialVersionUID = 0L;
             com.proto.sum.SumValue.class, com.proto.sum.SumValue.Builder.class);
   }
 
-  public static final int FIRST_NAME_FIELD_NUMBER = 1;
-  private volatile java.lang.Object firstName_;
+  public static final int FIRST_VALUE_FIELD_NUMBER = 1;
+  private int firstValue_;
   /**
-   * <code>string first_name = 1;</code>
-   * @return The firstName.
+   * <code>int32 first_value = 1;</code>
+   * @return The firstValue.
    */
-  public java.lang.String getFirstName() {
-    java.lang.Object ref = firstName_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      firstName_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string first_name = 1;</code>
-   * @return The bytes for firstName.
-   */
-  public com.google.protobuf.ByteString
-      getFirstNameBytes() {
-    java.lang.Object ref = firstName_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      firstName_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public int getFirstValue() {
+    return firstValue_;
   }
 
-  public static final int LAST_NAME_FIELD_NUMBER = 2;
-  private volatile java.lang.Object lastName_;
+  public static final int SECOND_VALUE_FIELD_NUMBER = 2;
+  private int secondValue_;
   /**
-   * <code>string last_name = 2;</code>
-   * @return The lastName.
+   * <code>int32 second_value = 2;</code>
+   * @return The secondValue.
    */
-  public java.lang.String getLastName() {
-    java.lang.Object ref = lastName_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      lastName_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string last_name = 2;</code>
-   * @return The bytes for lastName.
-   */
-  public com.google.protobuf.ByteString
-      getLastNameBytes() {
-    java.lang.Object ref = lastName_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      lastName_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public int getSecondValue() {
+    return secondValue_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -180,11 +124,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getFirstNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, firstName_);
+    if (firstValue_ != 0) {
+      output.writeInt32(1, firstValue_);
     }
-    if (!getLastNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, lastName_);
+    if (secondValue_ != 0) {
+      output.writeInt32(2, secondValue_);
     }
     unknownFields.writeTo(output);
   }
@@ -195,11 +139,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getFirstNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, firstName_);
+    if (firstValue_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(1, firstValue_);
     }
-    if (!getLastNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, lastName_);
+    if (secondValue_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, secondValue_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -216,10 +162,10 @@ private static final long serialVersionUID = 0L;
     }
     com.proto.sum.SumValue other = (com.proto.sum.SumValue) obj;
 
-    if (!getFirstName()
-        .equals(other.getFirstName())) return false;
-    if (!getLastName()
-        .equals(other.getLastName())) return false;
+    if (getFirstValue()
+        != other.getFirstValue()) return false;
+    if (getSecondValue()
+        != other.getSecondValue()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -231,10 +177,10 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + FIRST_NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getFirstName().hashCode();
-    hash = (37 * hash) + LAST_NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getLastName().hashCode();
+    hash = (37 * hash) + FIRST_VALUE_FIELD_NUMBER;
+    hash = (53 * hash) + getFirstValue();
+    hash = (37 * hash) + SECOND_VALUE_FIELD_NUMBER;
+    hash = (53 * hash) + getSecondValue();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -368,9 +314,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      firstName_ = "";
+      firstValue_ = 0;
 
-      lastName_ = "";
+      secondValue_ = 0;
 
       return this;
     }
@@ -398,8 +344,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.proto.sum.SumValue buildPartial() {
       com.proto.sum.SumValue result = new com.proto.sum.SumValue(this);
-      result.firstName_ = firstName_;
-      result.lastName_ = lastName_;
+      result.firstValue_ = firstValue_;
+      result.secondValue_ = secondValue_;
       onBuilt();
       return result;
     }
@@ -448,13 +394,11 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.proto.sum.SumValue other) {
       if (other == com.proto.sum.SumValue.getDefaultInstance()) return this;
-      if (!other.getFirstName().isEmpty()) {
-        firstName_ = other.firstName_;
-        onChanged();
+      if (other.getFirstValue() != 0) {
+        setFirstValue(other.getFirstValue());
       }
-      if (!other.getLastName().isEmpty()) {
-        lastName_ = other.lastName_;
-        onChanged();
+      if (other.getSecondValue() != 0) {
+        setSecondValue(other.getSecondValue());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -485,154 +429,62 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object firstName_ = "";
+    private int firstValue_ ;
     /**
-     * <code>string first_name = 1;</code>
-     * @return The firstName.
+     * <code>int32 first_value = 1;</code>
+     * @return The firstValue.
      */
-    public java.lang.String getFirstName() {
-      java.lang.Object ref = firstName_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        firstName_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    public int getFirstValue() {
+      return firstValue_;
     }
     /**
-     * <code>string first_name = 1;</code>
-     * @return The bytes for firstName.
-     */
-    public com.google.protobuf.ByteString
-        getFirstNameBytes() {
-      java.lang.Object ref = firstName_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        firstName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string first_name = 1;</code>
-     * @param value The firstName to set.
+     * <code>int32 first_value = 1;</code>
+     * @param value The firstValue to set.
      * @return This builder for chaining.
      */
-    public Builder setFirstName(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      firstName_ = value;
+    public Builder setFirstValue(int value) {
+      
+      firstValue_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string first_name = 1;</code>
+     * <code>int32 first_value = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearFirstName() {
+    public Builder clearFirstValue() {
       
-      firstName_ = getDefaultInstance().getFirstName();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string first_name = 1;</code>
-     * @param value The bytes for firstName to set.
-     * @return This builder for chaining.
-     */
-    public Builder setFirstNameBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      firstName_ = value;
+      firstValue_ = 0;
       onChanged();
       return this;
     }
 
-    private java.lang.Object lastName_ = "";
+    private int secondValue_ ;
     /**
-     * <code>string last_name = 2;</code>
-     * @return The lastName.
+     * <code>int32 second_value = 2;</code>
+     * @return The secondValue.
      */
-    public java.lang.String getLastName() {
-      java.lang.Object ref = lastName_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        lastName_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    public int getSecondValue() {
+      return secondValue_;
     }
     /**
-     * <code>string last_name = 2;</code>
-     * @return The bytes for lastName.
-     */
-    public com.google.protobuf.ByteString
-        getLastNameBytes() {
-      java.lang.Object ref = lastName_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        lastName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string last_name = 2;</code>
-     * @param value The lastName to set.
+     * <code>int32 second_value = 2;</code>
+     * @param value The secondValue to set.
      * @return This builder for chaining.
      */
-    public Builder setLastName(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      lastName_ = value;
+    public Builder setSecondValue(int value) {
+      
+      secondValue_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string last_name = 2;</code>
+     * <code>int32 second_value = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearLastName() {
+    public Builder clearSecondValue() {
       
-      lastName_ = getDefaultInstance().getLastName();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string last_name = 2;</code>
-     * @param value The bytes for lastName to set.
-     * @return This builder for chaining.
-     */
-    public Builder setLastNameBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      lastName_ = value;
+      secondValue_ = 0;
       onChanged();
       return this;
     }

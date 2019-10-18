@@ -8,26 +8,14 @@ public interface SumValueOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string first_name = 1;</code>
-   * @return The firstName.
+   * <code>int32 first_value = 1;</code>
+   * @return The firstValue.
    */
-  java.lang.String getFirstName();
-  /**
-   * <code>string first_name = 1;</code>
-   * @return The bytes for firstName.
-   */
-  com.google.protobuf.ByteString
-      getFirstNameBytes();
+  int getFirstValue();
 
   /**
-   * <code>string last_name = 2;</code>
-   * @return The lastName.
+   * <code>int32 second_value = 2;</code>
+   * @return The secondValue.
    */
-  java.lang.String getLastName();
-  /**
-   * <code>string last_name = 2;</code>
-   * @return The bytes for lastName.
-   */
-  com.google.protobuf.ByteString
-      getLastNameBytes();
+  int getSecondValue();
 }
