@@ -19,6 +19,7 @@ public class GreetingClient {
 
         // do something here
 
+        System.out.println("Shutting down channel");
         channel.shutdown();
     }
 }
