@@ -15,7 +15,7 @@ public class SumClient {
     public static void main(String[] args) {
         System.out.println("Hello I am grpc client");
 
-        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051)
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50054)
                 .usePlaintext()
                 .build();
 
