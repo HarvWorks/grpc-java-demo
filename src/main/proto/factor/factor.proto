@@ -10,7 +10,7 @@ message FactorRequest {
 }
 
 message FactorResponse {
-    int32 factor = 1;
+    int32 result = 1;
 }
 
 service FactorService {
