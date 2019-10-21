@@ -65,7 +65,7 @@ public final class GreetServiceGrpc {
       fullMethodName = SERVICE_NAME + '/' + "GreetManyTimes",
       requestType = com.proto.greet.GreetManyTimesRequest.class,
       responseType = com.proto.greet.GreetManyTimesResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
   public static io.grpc.MethodDescriptor<com.proto.greet.GreetManyTimesRequest,
       com.proto.greet.GreetManyTimesResponse> getGreetManyTimesMethod() {
     io.grpc.MethodDescriptor<com.proto.greet.GreetManyTimesRequest, com.proto.greet.GreetManyTimesResponse> getGreetManyTimesMethod;
@@ -74,7 +74,7 @@ public final class GreetServiceGrpc {
         if ((getGreetManyTimesMethod = GreetServiceGrpc.getGreetManyTimesMethod) == null) {
           GreetServiceGrpc.getGreetManyTimesMethod = getGreetManyTimesMethod =
               io.grpc.MethodDescriptor.<com.proto.greet.GreetManyTimesRequest, com.proto.greet.GreetManyTimesResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GreetManyTimes"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
@@ -132,7 +132,7 @@ public final class GreetServiceGrpc {
      * </pre>
      */
     public void greetManyTimes(com.proto.greet.GreetManyTimesRequest request,
-        io.grpc.stub.StreamObserver<com.proto.greet.GreetManyTimesResponse> responseObserver) throws InterruptedException {
+        io.grpc.stub.StreamObserver<com.proto.greet.GreetManyTimesResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getGreetManyTimesMethod(), responseObserver);
     }
 
@@ -147,7 +147,7 @@ public final class GreetServiceGrpc {
                   this, METHODID_GREET)))
           .addMethod(
             getGreetManyTimesMethod(),
-            asyncUnaryCall(
+            asyncServerStreamingCall(
               new MethodHandlers<
                 com.proto.greet.GreetManyTimesRequest,
                 com.proto.greet.GreetManyTimesResponse>(
@@ -192,7 +192,7 @@ public final class GreetServiceGrpc {
      */
     public void greetManyTimes(com.proto.greet.GreetManyTimesRequest request,
         io.grpc.stub.StreamObserver<com.proto.greet.GreetManyTimesResponse> responseObserver) {
-      asyncUnaryCall(
+      asyncServerStreamingCall(
           getChannel().newCall(getGreetManyTimesMethod(), getCallOptions()), request, responseObserver);
     }
   }
@@ -230,8 +230,9 @@ public final class GreetServiceGrpc {
      * Server Streaming
      * </pre>
      */
-    public com.proto.greet.GreetManyTimesResponse greetManyTimes(com.proto.greet.GreetManyTimesRequest request) {
-      return blockingUnaryCall(
+    public java.util.Iterator<com.proto.greet.GreetManyTimesResponse> greetManyTimes(
+        com.proto.greet.GreetManyTimesRequest request) {
+      return blockingServerStreamingCall(
           getChannel(), getGreetManyTimesMethod(), getCallOptions(), request);
     }
   }
@@ -264,17 +265,6 @@ public final class GreetServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getGreetMethod(), getCallOptions()), request);
     }
-
-    /**
-     * <pre>
-     * Server Streaming
-     * </pre>
-     */
-    public com.google.common.util.concurrent.ListenableFuture<com.proto.greet.GreetManyTimesResponse> greetManyTimes(
-        com.proto.greet.GreetManyTimesRequest request) {
-      return futureUnaryCall(
-          getChannel().newCall(getGreetManyTimesMethod(), getCallOptions()), request);
-    }
   }
 
   private static final int METHODID_GREET = 0;
@@ -302,12 +292,8 @@ public final class GreetServiceGrpc {
               (io.grpc.stub.StreamObserver<com.proto.greet.GreetResponse>) responseObserver);
           break;
         case METHODID_GREET_MANY_TIMES:
-          try {
-            serviceImpl.greetManyTimes((GreetManyTimesRequest) request,
-                (io.grpc.stub.StreamObserver<GreetManyTimesResponse>) responseObserver);
-          } catch (InterruptedException e) {
-            e.printStackTrace();
-          }
+          serviceImpl.greetManyTimes((com.proto.greet.GreetManyTimesRequest) request,
+              (io.grpc.stub.StreamObserver<com.proto.greet.GreetManyTimesResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();

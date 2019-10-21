@@ -54,12 +54,12 @@ public final class Greet {
       "Greeting\"\037\n\rGreetResponse\022\016\n\006result\030\001 \001(" +
       "\t\":\n\025GreetManyTimesRequest\022!\n\010greeting\030\001" +
       " \001(\0132\017.greet.Greeting\"(\n\026GreetManyTimesR" +
-      "esponse\022\016\n\006result\030\001 \001(\t2\225\001\n\014GreetService" +
+      "esponse\022\016\n\006result\030\001 \001(\t2\227\001\n\014GreetService" +
       "\0224\n\005Greet\022\023.greet.GreetRequest\032\024.greet.G" +
-      "reetResponse\"\000\022O\n\016GreetManyTimes\022\034.greet" +
+      "reetResponse\"\000\022Q\n\016GreetManyTimes\022\034.greet" +
       ".GreetManyTimesRequest\032\035.greet.GreetMany" +
-      "TimesResponse\"\000B\023\n\017com.proto.greetP\001b\006pr" +
-      "oto3"
+      "TimesResponse\"\0000\001B\023\n\017com.proto.greetP\001b\006" +
+      "proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
