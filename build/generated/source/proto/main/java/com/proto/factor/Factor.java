@@ -35,10 +35,10 @@ public final class Factor {
     java.lang.String[] descriptorData = {
       "\n\023factor/factor.proto\022\006factor\"\037\n\rFactorR" +
       "equest\022\016\n\006number\030\001 \001(\005\" \n\016FactorResponse" +
-      "\022\016\n\006result\030\001 \001(\0052J\n\rFactorService\0229\n\006Fac" +
+      "\022\016\n\006result\030\001 \001(\0052L\n\rFactorService\022;\n\006Fac" +
       "tor\022\025.factor.FactorRequest\032\026.factor.Fact" +
-      "orResponse\"\000B\024\n\020com.proto.factorP\001b\006prot" +
-      "o3"
+      "orResponse\"\0000\001B\024\n\020com.proto.factorP\001b\006pr" +
+      "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

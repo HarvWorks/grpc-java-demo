@@ -14,5 +14,5 @@ message FactorResponse {
 }
 
 service FactorService {
-    rpc Factor(FactorRequest) returns (FactorResponse) {};
+    rpc Factor(FactorRequest) returns (stream FactorResponse) {};
 }

@@ -34,7 +34,7 @@ public final class FactorServiceGrpc {
       fullMethodName = SERVICE_NAME + '/' + "Factor",
       requestType = com.proto.factor.FactorRequest.class,
       responseType = com.proto.factor.FactorResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
   public static io.grpc.MethodDescriptor<com.proto.factor.FactorRequest,
       com.proto.factor.FactorResponse> getFactorMethod() {
     io.grpc.MethodDescriptor<com.proto.factor.FactorRequest, com.proto.factor.FactorResponse> getFactorMethod;
@@ -43,7 +43,7 @@ public final class FactorServiceGrpc {
         if ((getFactorMethod = FactorServiceGrpc.getFactorMethod) == null) {
           FactorServiceGrpc.getFactorMethod = getFactorMethod =
               io.grpc.MethodDescriptor.<com.proto.factor.FactorRequest, com.proto.factor.FactorResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Factor"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
@@ -96,7 +96,7 @@ public final class FactorServiceGrpc {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
             getFactorMethod(),
-            asyncUnaryCall(
+            asyncServerStreamingCall(
               new MethodHandlers<
                 com.proto.factor.FactorRequest,
                 com.proto.factor.FactorResponse>(
@@ -127,7 +127,7 @@ public final class FactorServiceGrpc {
      */
     public void factor(com.proto.factor.FactorRequest request,
         io.grpc.stub.StreamObserver<com.proto.factor.FactorResponse> responseObserver) {
-      asyncUnaryCall(
+      asyncServerStreamingCall(
           getChannel().newCall(getFactorMethod(), getCallOptions()), request, responseObserver);
     }
   }
@@ -152,8 +152,9 @@ public final class FactorServiceGrpc {
 
     /**
      */
-    public com.proto.factor.FactorResponse factor(com.proto.factor.FactorRequest request) {
-      return blockingUnaryCall(
+    public java.util.Iterator<com.proto.factor.FactorResponse> factor(
+        com.proto.factor.FactorRequest request) {
+      return blockingServerStreamingCall(
           getChannel(), getFactorMethod(), getCallOptions(), request);
     }
   }
@@ -174,14 +175,6 @@ public final class FactorServiceGrpc {
     protected FactorServiceFutureStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       return new FactorServiceFutureStub(channel, callOptions);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<com.proto.factor.FactorResponse> factor(
-        com.proto.factor.FactorRequest request) {
-      return futureUnaryCall(
-          getChannel().newCall(getFactorMethod(), getCallOptions()), request);
     }
   }
 
