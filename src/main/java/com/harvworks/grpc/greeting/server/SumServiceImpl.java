@@ -1,9 +1,6 @@
 package com.harvworks.grpc.greeting.server;
 
-import com.proto.sum.SumRequest;
-import com.proto.sum.SumResponse;
-import com.proto.sum.SumServiceGrpc;
-import com.proto.sum.SumValue;
+import com.proto.sum.*;
 import io.grpc.stub.StreamObserver;
 
 public class SumServiceImpl extends SumServiceGrpc.SumServiceImplBase {
@@ -19,5 +16,31 @@ public class SumServiceImpl extends SumServiceGrpc.SumServiceImplBase {
 
         responseObserver.onNext(response);
         responseObserver.onCompleted();
+    }
+
+    @Override
+    public void primeDecomposition(PrimeDecompositionRequest request, StreamObserver<PrimeDecompositionResponse> responseObserver) {
+        int number = request.getNumber();
+
+        try {
+            int factor = 2;
+            while (number > 1) {
+                if (number % factor == 0) {
+                    number /= factor;
+                    responseObserver.onNext(PrimeDecompositionResponse.newBuilder()
+                                    .setPrimeFactor(factor)
+                                    .build());
+                    Thread.sleep(500);
+                } else {
+                    factor ++;
+                }
+            }
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            // Complete the RPC call
+            responseObserver.onCompleted();
+        }
     }
 }

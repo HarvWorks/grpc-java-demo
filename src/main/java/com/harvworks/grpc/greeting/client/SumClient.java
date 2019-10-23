@@ -4,10 +4,7 @@ import com.proto.greet.GreetRequest;
 import com.proto.greet.GreetResponse;
 import com.proto.greet.GreetServiceGrpc;
 import com.proto.greet.Greeting;
-import com.proto.sum.SumRequest;
-import com.proto.sum.SumResponse;
-import com.proto.sum.SumServiceGrpc;
-import com.proto.sum.SumValue;
+import com.proto.sum.*;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
@@ -24,22 +21,32 @@ public class SumClient {
         // Created sum client service (Sync)
         SumServiceGrpc.SumServiceBlockingStub sumServiceClient = SumServiceGrpc.newBlockingStub(channel);
 
-        // Created a protocol buffer greeting message
-        SumValue sumValue = SumValue.newBuilder()
-                .setFirstValue(10)
-                .setSecondValue(5)
-                .build();
+        // Uniary
+//        // Created a protocol buffer for summing
+//        SumValue sumValue = SumValue.newBuilder()
+//                .setFirstValue(10)
+//                .setSecondValue(5)
+//                .build();
+//
+//        // Do the same for sumResponse
+//        SumRequest sumRequest = SumRequest.newBuilder()
+//                .setSumValue(sumValue)
+//                .build();
+//
+//        // call the RPC and get a greetResponse
+//        SumResponse sumResponse =  sumServiceClient.sum(sumRequest);
+//
+//        System.out.println(sumResponse.getResult());
 
-        // Do the same for greetResponse
-        SumRequest sumRequest = SumRequest.newBuilder()
-                .setSumValue(sumValue)
-                .build();
+        // Streaming
 
-        // call the RPC and get a greetResponse
-        SumResponse sumResponse =  sumServiceClient.sum(sumRequest);
+        Integer number = 567890;
 
-        System.out.println(sumResponse.getResult());
-
+        sumServiceClient.primeDecomposition(PrimeDecompositionRequest.newBuilder()
+                .setNumber(number).build())
+                .forEachRemaining(primeDecompositionResponse -> {
+                    System.out.println(primeDecompositionResponse);
+                });
         System.out.println("Shutting down channel");
         channel.shutdown();
     }
