@@ -52,9 +52,9 @@ public final class Sum {
       "t_value\030\001 \001(\005\022\024\n\014second_value\030\002 \001(\005\".\n\nS" +
       "umRequest\022 \n\tsum_value\030\001 \001(\0132\r.sum.SumVa" +
       "lue\"\035\n\013SumResponse\022\016\n\006result\030\001 \001(\005\"+\n\031Pr" +
-      "imeDecompositionRequest\022\016\n\006number\030\001 \001(\005\"" +
+      "imeDecompositionRequest\022\016\n\006number\030\001 \001(\003\"" +
       "2\n\032PrimeDecompositionResponse\022\024\n\014prime_f" +
-      "actor\030\001 \001(\0052\223\001\n\nSumService\022*\n\003Sum\022\017.sum." +
+      "actor\030\001 \001(\0032\223\001\n\nSumService\022*\n\003Sum\022\017.sum." +
       "SumRequest\032\020.sum.SumResponse\"\000\022Y\n\022PrimeD" +
       "ecomposition\022\036.sum.PrimeDecompositionReq" +
       "uest\032\037.sum.PrimeDecompositionResponse\"\0000" +

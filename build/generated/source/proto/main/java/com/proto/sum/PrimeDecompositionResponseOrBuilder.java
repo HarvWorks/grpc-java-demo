@@ -8,8 +8,8 @@ public interface PrimeDecompositionResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 prime_factor = 1;</code>
+   * <code>int64 prime_factor = 1;</code>
    * @return The primeFactor.
    */
-  int getPrimeFactor();
+  long getPrimeFactor();
 }

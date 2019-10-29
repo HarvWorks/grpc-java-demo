@@ -20,10 +20,10 @@ public class SumServiceImpl extends SumServiceGrpc.SumServiceImplBase {
 
     @Override
     public void primeDecomposition(PrimeDecompositionRequest request, StreamObserver<PrimeDecompositionResponse> responseObserver) {
-        int number = request.getNumber();
+        long number = request.getNumber();
 
         try {
-            int factor = 2;
+            long factor = 2L;
             while (number > 1) {
                 if (number % factor == 0) {
                     number /= factor;

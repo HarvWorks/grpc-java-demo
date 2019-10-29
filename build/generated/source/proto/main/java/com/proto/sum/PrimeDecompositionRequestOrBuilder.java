@@ -8,8 +8,8 @@ public interface PrimeDecompositionRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 number = 1;</code>
+   * <code>int64 number = 1;</code>
    * @return The number.
    */
-  int getNumber();
+  long getNumber();
 }

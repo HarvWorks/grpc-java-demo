@@ -50,7 +50,7 @@ private static final long serialVersionUID = 0L;
             break;
           case 8: {
 
-            number_ = input.readInt32();
+            number_ = input.readInt64();
             break;
           }
           default: {
@@ -86,12 +86,12 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int NUMBER_FIELD_NUMBER = 1;
-  private int number_;
+  private long number_;
   /**
-   * <code>int32 number = 1;</code>
+   * <code>int64 number = 1;</code>
    * @return The number.
    */
-  public int getNumber() {
+  public long getNumber() {
     return number_;
   }
 
@@ -109,8 +109,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (number_ != 0) {
-      output.writeInt32(1, number_);
+    if (number_ != 0L) {
+      output.writeInt64(1, number_);
     }
     unknownFields.writeTo(output);
   }
@@ -121,9 +121,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (number_ != 0) {
+    if (number_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, number_);
+        .computeInt64Size(1, number_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -154,7 +154,8 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + NUMBER_FIELD_NUMBER;
-    hash = (53 * hash) + getNumber();
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getNumber());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -288,7 +289,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      number_ = 0;
+      number_ = 0L;
 
       return this;
     }
@@ -365,7 +366,7 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.proto.sum.PrimeDecompositionRequest other) {
       if (other == com.proto.sum.PrimeDecompositionRequest.getDefaultInstance()) return this;
-      if (other.getNumber() != 0) {
+      if (other.getNumber() != 0L) {
         setNumber(other.getNumber());
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -397,32 +398,32 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int number_ ;
+    private long number_ ;
     /**
-     * <code>int32 number = 1;</code>
+     * <code>int64 number = 1;</code>
      * @return The number.
      */
-    public int getNumber() {
+    public long getNumber() {
       return number_;
     }
     /**
-     * <code>int32 number = 1;</code>
+     * <code>int64 number = 1;</code>
      * @param value The number to set.
      * @return This builder for chaining.
      */
-    public Builder setNumber(int value) {
+    public Builder setNumber(long value) {
       
       number_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 number = 1;</code>
+     * <code>int64 number = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearNumber() {
       
-      number_ = 0;
+      number_ = 0L;
       onChanged();
       return this;
     }

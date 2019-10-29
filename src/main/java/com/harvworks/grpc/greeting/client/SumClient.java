@@ -40,7 +40,7 @@ public class SumClient {
 
         // Streaming
 
-        Integer number = 567890;
+        Long number = 5678903444234324L;
 
         sumServiceClient.primeDecomposition(PrimeDecompositionRequest.newBuilder()
                 .setNumber(number).build())
